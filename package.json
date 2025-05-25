@@ -1,0 +1,27 @@
+{
+  "name": "tp_integrador_redsocial",
+  "version": "1.0.0",
+  "main": "./src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaloviniV/TP_Integrador_RedSocial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaloviniV/TP_Integrador_RedSocial/issues"
+  },
+  "homepage": "https://github.com/MaloviniV/TP_Integrador_RedSocial#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "pug": "^3.0.3",
+    "tp_integrador_redsocial": "file:"
+  }
+}

@@ -1,0 +1,24 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title} | ArteSano
+    link(rel="icon" type="image/png" href="/images/favicon.png")
+    link(rel="stylesheet", href="style_login.css")
+    script(src="script_login" defer) 
+  body 
+    header
+      h1 logo_ARTE-SANO
+    main 
+      .container 
+        h2 INICIAR SESIÓN
+        form(action="#", method="")
+          label(for="mail") Email:
+          input(type="email" id="mail" name="mail" placeholder="Email")
+          label(for="pw") Contraseña:
+          input(type="password" id="pw" name="pw" placeholder="Contraseña")
+          a(href="") ¿Olvidaste la contraseña?
+          button#btnCuentaNueva CREAR CUENTA NUEVA
+    footer
+      p © 2025 ArteSano - Todos los derechos reservados
