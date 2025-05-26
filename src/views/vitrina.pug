@@ -1,0 +1,12 @@
+if publicaciones
+  .vitrina
+    each publi in publicaciones 
+      .publicacion
+        h1.user #{publi.usuario}
+        h3.resenia  #{publi.resenia}
+        img.image(src=publi.imagen alt="img_compartida" onerror="this.onerror=null;this.src='/images/sinImagen.png';" )
+        .acciones 
+          button Comentar
+          button Denunciar
+else 
+  p No hay publicaciones

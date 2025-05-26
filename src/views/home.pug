@@ -1,0 +1,40 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title} | ArteSano
+    link(rel="icon" type="image/png" href="/images/favicon.png")
+    link(rel="stylesheet", href="style_home.css")
+    script(src="script_home" defer) 
+  body 
+    header
+      h1 logo_ARTE-SANO
+      label(for="buscar") Buscar
+      input(type="text" id="buscar" name="buscar" placeholder="Buscar en ArteSano")
+      nav.nav
+        ul.list 
+          li.list_item
+            .list_button
+              a(href="#")
+                span 
+                  img(src="#", alt="img_user" onerror="this.onerror=null;this.src='/icons/user.svg';" width="10px")
+            ul.list_show
+              li.list_item_user 
+                img(src="#", alt="img_datos" onerror="this.onerror=null;this.src='/icons/datos.svg';" width="10px")
+                a(href="#") Modificar perfil 
+              li.list_item_user 
+                img(src="#", alt="img_password" onerror="this.onerror=null;this.src='/icons/password.svg';" width="10px")
+                a(href="#") Cambiar contraseña
+
+          li.list_item
+            .list_button
+                a(href="#")
+                  span 
+                  img(src="#", alt="img_notif" onerror="this.onerror=null;this.src='/icons/notif.svg';" width="10px")
+
+    main
+      .container
+        include vitrina.pug
+    footer
+      p © 2025 ArteSano - Todos los derechos reservados
