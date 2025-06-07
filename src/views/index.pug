@@ -5,21 +5,31 @@ html(lang="es")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{title} | ArteSano
     link(rel="icon" type="image/png" href="/images/favicon.png")
-    link(rel="stylesheet", href="style_index.css")
-    script(src="script_index" defer) 
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css")
+    link(rel="stylesheet", href="/stylesheets/style_index.css")
+    script(src="/javascripts/script_index.js" defer) 
   body 
-    header
-      h1 logo_ARTE-SANO
-      nav 
-        button INICIAR SESIÓN
-    main 
-      .container 
-        h1 ARTE-SANO
-        p ARTE.SANO <br>¡Bienvenido a nuestra comunidad de artesanos! Un espacio creado para conectar, compartir y inspirarse junto a personas que comparten tu pasión. <br>Aquí encontrarás creatividad, apoyo y nuevas oportunidades para crecer.
-      section
+    header.bg-dark.text-white.py-3.mb-4.sticky-top
+      .container.d-flex.justify-content-between.align-items-center
+        h1.mb-0.logo_ARTE-SANO ARTE-SANO
+        nav
+          button.btn.btn-outline-light.rounded-pill.px-4.py-0.fs-5.d-flex.align-items-center(type="button" id="btn-login")
+            i.bi.bi-person-circle.icono
+            span.d-none.d-sm-inline.ms-3 INICIAR SESIÓN
+    main
+      .container-fluid.p-0
+        .row.justify-content-center.align-items-center.m-0
+          .col-md-8.text-center.full-vh-row
+            h1.display-4.mb-3 ARTE-SANO
+            p.lead ARTE.SANO 
+              br
+              | ¡Bienvenido a nuestra comunidad de artesanos! Un espacio creado para conectar, compartir y inspirarse junto a personas que comparten tu pasión.
+              br
+              | Aquí encontrarás creatividad, apoyo y nuevas oportunidades para crecer.
+      section.mt-5
         .vitrina
           .container
             include vitrina.pug
-
-    footer
-      p © 2025 ArteSano - Todos los derechos reservados
+    footer.bg-dark.text-white.text-center.py-3.mt-5
+      p.mb-0 © 2025 ArteSano - Todos los derechos reservados

@@ -1,59 +1,62 @@
 import express from "express";
+import "dotenv/config";
 import path from "path";
 import { fileURLToPath } from 'url';
 
-const app = express();
-const port = normalizePort(process.env.PORT || '3000');
+import viewsRoutes from "./routes/views.js";
+import userRoutes from "./routes/usuario.router.js";
+
+const app = express();    //Instancio express
+const port = process.env.PORT || "3000"; //recupero el puerto
+//Recupero la ruta del directorio principal
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.set('port', port);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, '..', 'public')));
+//CONFIGURACION DEL SERVIDOR
+app.set('port', port);  //Configuracion de informacion de la app
+app.set('views', path.join(__dirname, 'views'));  //indico la carpeta donde se almacenaran las vistas
+app.set('view engine', 'pug');  //indico que voy a trabajar las vistas con PUG
+app.use(express.static(path.join(__dirname, '..', 'public')));  //Declaro la carpeta PUBLICA
+app.use(express.json());  //peticion de datos JSon-->ObjetoJS
+app.use(express.urlencoded({ extended: true })); //desde formularios URL-encoded-->ObjetoJS
 
-app.get("/",(req,res)=>{
-  res.render("index",{title:"Bienvenido"});
-});
+//ENDPOINTS
+app.use("/",viewsRoutes);
 
-app.get("/login",(req,res)=>{
-  res.render("login",{title:"Iniciar sesión"});
-});
+app.use("/usuarios",userRoutes);
 
-app.get("/home",(req,res)=>{
-  const publicaciones = [
-    {
-        usuario: "Juan Pérez",
-        resenia: "Excelente producto, superó mis expectativas.",
-        imagen: "/icons/user2.svg"
-    },
-    {
-        usuario: "María López",
-        resenia: "El servicio fue rápido y eficiente, lo recomiendo.",
-        imagen: "/icons/user.svg"
-    },
-    {
-        usuario: "Carlos Gómez",
-        resenia: "Buena calidad, aunque esperaba un poco más.",
-        imagen: "/icons/user.svg"
-    },
-    {
-        usuario: "Ana Martínez",
-        resenia: "Increíble experiencia, volveré a comprar sin duda.",
-        imagen: "/icons/user.svg"
-    }
-];
+// app.get("/login",(req,res)=>{
+//   res.render("login",{title:"Iniciar sesión"});
+// });
 
-  res.render("home",{title:"HOME",publicaciones});
-});
+// app.get("/home",(req,res)=>{
+//   const publicaciones = [
+//     {
+//         usuario: "Juan Pérez",
+//         resenia: "Excelente producto, superó mis expectativas.",
+//         imagen: "/icons/user2.svg"
+//     },
+//     {
+//         usuario: "María López",
+//         resenia: "El servicio fue rápido y eficiente, lo recomiendo.",
+//         imagen: "/icons/user.svg"
+//     },
+//     {
+//         usuario: "Carlos Gómez",
+//         resenia: "Buena calidad, aunque esperaba un poco más.",
+//         imagen: "/icons/user.svg"
+//     },
+//     {
+//         usuario: "Ana Martínez",
+//         resenia: "Increíble experiencia, volveré a comprar sin duda.",
+//         imagen: "/icons/user.svg"
+//     }
+// ];
 
+//   res.render("home",{title:"HOME",publicaciones});
+// });
+
+//INICIO EL SERVIDOR
 app.listen(port,()=>{
   console.log(`Servidor escuchando en: http://localhost:${port}`);
 });
-
-function normalizePort(val) {
-  const port = parseInt(val, 10);
-  if (isNaN(port)) return false;
-  if (port >= 0) return port;
-  return false;
-}

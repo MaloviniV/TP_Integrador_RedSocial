@@ -4,8 +4,7 @@
   "main": "./src/app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js"
+    "start": "node --watch ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +19,14 @@
   "homepage": "https://github.com/MaloviniV/TP_Integrador_RedSocial#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "mysql2": "^3.14.1",
     "pug": "^3.0.3",
+    "sequelize": "^6.37.7",
     "tp_integrador_redsocial": "file:"
+  },
+  "devDependencies": {
+    "sequelize-auto": "^0.8.8"
   }
 }

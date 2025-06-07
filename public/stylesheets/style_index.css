@@ -1,0 +1,21 @@
+/* Hace que la fila principal ocupe todo el alto del viewport */
+.full-vh-row {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Opcional: mejora la transición al hacer scroll hacia la sección */
+html {
+  scroll-behavior: smooth;
+}
+main{
+  margin-top: -6rem;
+}
+
+.icono {
+  font-size: 2.5rem;
+  vertical-align: middle; /* Centra mejor con el texto */
+}
