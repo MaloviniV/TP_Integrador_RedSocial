@@ -7,7 +7,7 @@ import _denuncias from  "./denuncias.js";
 import _imagenes from  "./imagenes.js";
 import _notificaciones from  "./notificaciones.js";
 import Perfil from  "./perfil.js";
-import _sesiones from  "./sesiones.js";
+import Sesion from  "./sesion.js";
 import _solicitud_amistad from  "./solicitud_amistad.js";
 import _tags from  "./tags.js";
 import _usuario_amigo from  "./usuario_amigo.js";
@@ -22,7 +22,7 @@ export default function initModels(sequelize) {
   const imagenes = _imagenes.init(sequelize, DataTypes);
   const notificaciones = _notificaciones.init(sequelize, DataTypes);
   const PerfilModel = Perfil.init(sequelize, DataTypes);
-  const sesiones = _sesiones.init(sequelize, DataTypes);
+  const SesionModel = Sesion.init(sequelize, DataTypes);
   const solicitud_amistad = _solicitud_amistad.init(sequelize, DataTypes);
   const tags = _tags.init(sequelize, DataTypes);
   const usuario_amigo = _usuario_amigo.init(sequelize, DataTypes);
@@ -57,8 +57,8 @@ export default function initModels(sequelize) {
   UsuarioModel.hasMany(denuncias, { as: "denuncia", foreignKey: "id_usuario_reportante"});
   notificaciones.belongsTo(UsuarioModel, { as: "id_usuario_usuario", foreignKey: "id_usuario"});
   UsuarioModel.hasMany(notificaciones, { as: "notificaciones", foreignKey: "id_usuario"});
-  sesiones.belongsTo(UsuarioModel, { as: "id_usuario_usuario", foreignKey: "id_usuario"});
-  UsuarioModel.hasMany(sesiones, { as: "sesiones", foreignKey: "id_usuario"});
+  SesionModel.belongsTo(UsuarioModel, { as: "id_usuario_usuario", foreignKey: "id_usuario"});
+  UsuarioModel.hasMany(SesionModel, { as: "sesiones", foreignKey: "id_usuario"});
   solicitud_amistad.belongsTo(UsuarioModel, { as: "id_emisor_usuario", foreignKey: "id_emisor"});
   UsuarioModel.hasMany(solicitud_amistad, { as: "solicitud_amistads", foreignKey: "id_emisor"});
   solicitud_amistad.belongsTo(UsuarioModel, { as: "id_receptor_usuario", foreignKey: "id_receptor"});
@@ -78,7 +78,7 @@ export default function initModels(sequelize) {
     imagenes,
     notificaciones,
     PerfilModel,
-    sesiones,
+    SesionModel,
     solicitud_amistad,
     tags,
     usuario_amigo,

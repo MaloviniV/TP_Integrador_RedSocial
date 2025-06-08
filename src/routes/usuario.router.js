@@ -5,7 +5,7 @@ import {getUsuarios,getUsuarioByMail} from "../controllers/usuario.controller.js
 
 router.get("/",getUsuarios);
 
-router.post("/usuarioByMail",getUsuarioByMail);
+router.post("/",getUsuarioByMail);
 
 //EXPORTO las rutas para usar en la app
 export default router;

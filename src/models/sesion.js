@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import {Model, DataTypes} from 'sequelize';
 
-export default class sesiones extends Model {
-  static init(sequelize, DataTypes) {
+export default class Sesion extends Model {
+  static init(sequelize) {
   return super.init({
     id_sesion: {
       autoIncrement: true,
@@ -22,19 +21,15 @@ export default class sesiones extends Model {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    fecha_inicio: {
+    fecha_expiracion_token: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('current_timestamp')
-    },
-    fecha_fin: {
-      type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
+      defaultValue: DataTypes.NOW
     },
     estado: {
-      type: DataTypes.ENUM('ACTIVA','INACTIVA','CERRADA'),
+      type: DataTypes.TINYINT,
       allowNull: false,
-      defaultValue: "ACTIVA"
+      defaultValue: 0
     }
   }, {
     sequelize,

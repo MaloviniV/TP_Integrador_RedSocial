@@ -19,23 +19,49 @@ html(lang="es")
           .col-md-8.col-lg-5
             .bg-white.rounded-4.shadow-lg.p-4.mt-4.border.border-1.border-warning
               h2.text-center.mb-4.text-dark RECUPERA TU CUENTA
-              if status!=200
-                if status === 400
-                  .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
-                    h4.text-danger.fs-6.mb-1 Ingresa un mail valido.
-                if status === 404
-                  .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
-                    h4.text-danger.fs-6.mb-1 No hay resultados para esta búsqueda.
-                    p.lead.fs-6.mb-0.text-danger-emphasis Tu búsqueda no ha devuelto ningún resultado. Vuelve a intentarlo con otra información.
-                if error === 500
-                  .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
-                    h4.text-danger.fs-6.mb-1 "Ocurrió un error inesperado. Por favor, intenta nuevamente más tarde."
-                form(action="/usuarios/usuarioByMail", method="post")
+
+              // Mensajes de error
+              if status === 400
+                .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+                  h4.text-danger.fs-6.mb-1 Ingresa un mail valido.
+              if status === 404
+                .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+                  h4.text-danger.fs-6.mb-1 No hay resultados para esta búsqueda.
+                  p.lead.fs-6.mb-0.text-danger-emphasis Tu búsqueda no ha devuelto ningún resultado. Vuelve a intentarlo con otra información.
+              if status === 500
+                .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+                  h4.text-danger.fs-6.mb-1 "Ocurrió un error inesperado. Por favor, intenta nuevamente más tarde."
+              
+              // Formulario de búsqueda
+              if !mostrarOpciones
+                form(action="/recuperar", method="post")
                   p.lead Introduce tu correo electrónico para buscar tu cuenta.
                   label.form-label(for="mail") Email:
                   input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" value=mail)
                   .d-flex.justify-content-end.gap-2.flex-wrap.overflow-auto
                     button.btn.btn-outline-dark.flex-shrink-0(id="cancelar" type="button" style="min-width:120px; max-width:180px;") Cancelar
                     button.btn.btn-warning.flex-shrink-0(type="submit" style="min-width:120px; max-width:180px;") Buscar
+
+              // Selección de método de envío
+              if mostrarOpciones 
+                form(action="/recuperar/enviar-codigo", method="post")
+                  input(type="hidden" name="mail" value=mail)
+                  .mb-3
+                    label.form-label.mb-2 ¿Cómo quieres recibir tu código de recuperación?
+                    .form-check
+                      label.form-check-label(for="email") Email: #{emailOculto}
+                      input.form-check-input(type="radio" name="metodo" id="email" value="email" checked)
+                    .form-check
+                      label.form-check-label(for="sms") SMS: #{telefonoOculto}
+                      input.form-check-input(type="radio" name="metodo" id="sms" value="sms")
+                  .d-flex.justify-content-end.gap-2.flex-wrap
+                    button.btn.btn-outline-dark.flex-shrink-0(id="noMail" type="button") ¿No eres tu?
+                    button.btn.btn-warning.flex-shrink-0(type="submit") Enviar código
+
+              // Mensaje de éxito
+              if mensaje
+                .alert.alert-success.mt-3.text-center= mensaje
+
+                
     footer.bg-dark.text-white.text-center.py-3.mt-5.border-top.border-warning
       p.mb-0 © 2025 ArteSano - Todos los derechos reservados

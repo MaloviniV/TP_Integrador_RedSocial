@@ -22,7 +22,7 @@ export default class Usuario extends Model {
         allowNull: false,
         unique: "email"
       },
-      teléfono: {
+      telefono: {
         type: DataTypes.STRING(20),
         allowNull: true
       },

@@ -4,7 +4,7 @@ import path from "path";
 import { fileURLToPath } from 'url';
 
 import viewsRoutes from "./routes/views.js";
-import userRoutes from "./routes/usuario.router.js";
+import recuperarRoutes from "./routes/recuperar.router.js";
 
 const app = express();    //Instancio express
 const port = process.env.PORT || "3000"; //recupero el puerto
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true })); //desde formularios URL-encoded
 //ENDPOINTS
 app.use("/",viewsRoutes);
 
-app.use("/usuarios",userRoutes);
+app.use("/recuperar",recuperarRoutes);
 
 // app.get("/login",(req,res)=>{
 //   res.render("login",{title:"Iniciar sesión"});
