@@ -5,6 +5,10 @@ router.get("/",(req,res)=>{
   res.render("index",{title:"Bienvenido"});
 });
 
+router.get("/recuperar",(req,res)=>{
+  res.render("recuperar",{title:"Recuperar Cuenta"});
+});
+
 router.get("/home",(req,res)=>{
   const publicaciones = [
     {
