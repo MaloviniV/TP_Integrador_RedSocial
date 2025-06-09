@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import { Model, DataTypes } from 'sequelize';
 
-export default class albumes extends Model {
-  static init(sequelize, DataTypes) {
+export default class Album extends Model {
+  static init(sequelize) {
   return super.init({
     id_album: {
       autoIncrement: true,
@@ -25,7 +24,7 @@ export default class albumes extends Model {
     fecha_creacion: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('current_timestamp')
+      defaultValue: DataTypes.NOW
     },
     tipo_album: {
       type: DataTypes.ENUM('PERSONAL','SEGUIDO'),

@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import { Model, DataTypes } from 'sequelize';
 
-export default class albumes_tags extends Model {
-  static init(sequelize, DataTypes) {
+export default class Album_tag extends Model {
+  static init(sequelize) {
   return super.init({
     id_tag: {
       type: DataTypes.INTEGER,

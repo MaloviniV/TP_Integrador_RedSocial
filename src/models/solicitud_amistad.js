@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import { Model, DataTypes } from 'sequelize';
 
-export default class solicitud_amistad extends Model {
-  static init(sequelize, DataTypes) {
+export default class Solicitud_amistad extends Model {
+  static init(sequelize) {
   return super.init({
     id_solicitud: {
       type: DataTypes.INTEGER,
@@ -33,7 +32,7 @@ export default class solicitud_amistad extends Model {
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('current_timestamp')
+      defaultValue: DataTypes.NOW
     }
   }, {
     sequelize,

@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import { Model, DataTypes } from 'sequelize';
 
-export default class notificaciones extends Model {
-  static init(sequelize, DataTypes) {
+export default class Notificacion extends Model {
+  static init(sequelize) {
   return super.init({
     id_notificacion: {
       autoIncrement: true,
@@ -29,7 +28,7 @@ export default class notificaciones extends Model {
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('current_timestamp')
+      defaultValue: DataTypes.NOW
     },
     estado: {
       type: DataTypes.ENUM('PENDIENTE','LEIDA'),

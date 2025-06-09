@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import { Model, DataTypes } from 'sequelize';
 
-export default class usuario_amigo extends Model {
-  static init(sequelize, DataTypes) {
+export default class Usuario_amigo extends Model {
+  static init(sequelize) {
   return super.init({
     id_seguidor: {
       type: DataTypes.INTEGER,

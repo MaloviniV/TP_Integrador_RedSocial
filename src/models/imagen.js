@@ -1,8 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class imagenes extends Model {
-  static init(sequelize, DataTypes) {
+import { Model, DataTypes } from 'sequelize';
+export default class Imagen extends Model {
+  static init(sequelize) {
   return super.init({
     id_imagen: {
       autoIncrement: true,
@@ -38,7 +36,7 @@ export default class imagenes extends Model {
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('current_timestamp')
+      defaultValue: DataTypes.NOW
     }
   }, {
     sequelize,

@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import { Model, DataTypes } from 'sequelize';
 
-export default class comentarios extends Model {
-  static init(sequelize, DataTypes) {
+export default class Comentario extends Model {
+  static init(sequelize) {
   return super.init({
     id_comentario: {
       autoIncrement: true,
@@ -33,7 +32,7 @@ export default class comentarios extends Model {
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('current_timestamp')
+      defaultValue: DataTypes.NOW
     },
     comentario_padre: {
       type: DataTypes.INTEGER,

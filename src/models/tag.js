@@ -1,8 +1,7 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+import { Model, DataTypes } from 'sequelize';
 
-export default class tags extends Model {
-  static init(sequelize, DataTypes) {
+export default class Tag extends Model {
+  static init(sequelize) {
   return super.init({
     id_tag: {
       autoIncrement: true,
