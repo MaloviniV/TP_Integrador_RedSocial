@@ -1,13 +1,14 @@
 //importo los datos de acceso a la BD
-import dotenv from "dotenv"
-dotenv.config();
+import dotenv from "dotenv";
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envFile });
 //importo SEQUELIZE
 import {Sequelize} from "sequelize";
 
-const sequelize = new Sequelize("artesanos_redsocial", 'root', "", {
-  host: "localhost",
-  dialect: "mysql",
-  port: "3306"
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+  host: process.env.DB_HOST,
+  dialect: process.env.DB_DIALECT,
+  port: process.env.DB_PORT
 });
 
 export default sequelize;

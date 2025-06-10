@@ -19,13 +19,15 @@ html(lang="es")
           .col-md-8.col-lg-5
             .bg-white.rounded-4.shadow-lg.p-4.mt-4.border.border-1.border-warning
               h2.text-center.mb-4.text-dark INICIAR SESIÓN
-              form(action="#", method="post")
+              form(action="/login", method="post")
                 label.form-label(for="mail") Email:
                 input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" required)
                 label.form-label(for="pw") Contraseña:
                 input.form-control.mb-2(type="password" id="pw" name="pw" placeholder="Contraseña" required)
-                a.d-block.mb-3.text-end(href="/recuperar") ¿Olvidaste la contraseña?
+                .text-end.my-3
+                  a(href="/recuperar") ¿Olvidaste la contraseña?
                 button.btn.btn-warning.w-100.mb-2(type="submit") Ingresar
                 button.btn.btn-outline-dark.w-100(id="btnNuevaCuenta" type="button") Crear cuenta nueva
     footer.bg-dark.text-white.text-center.py-3.mt-5.border-top.border-warning
       p.mb-0 © 2025 ArteSano - Todos los derechos reservados
+      p.mb-0 Victor Jose David Malovini ULP - WEB2
