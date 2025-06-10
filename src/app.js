@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import viewsRoutes from "./routes/views.js";
 import recuperarRoutes from "./routes/recuperar.router.js";
 import loginRoutes from "./routes/login.router.js";
+import usuarioRoutes from "./routes/usuario.router.js";
 
 import morgan from "morgan";
 
@@ -29,6 +30,8 @@ app.use("/",viewsRoutes);
 app.use("/recuperar",recuperarRoutes);
 
 app.use("/login",loginRoutes);
+
+app.use("/usuario", usuarioRoutes);
 
 //Middleware para error 404
 app.use((req, res, next) => {

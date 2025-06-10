@@ -1,5 +1,7 @@
 import initModels from "../models/init-models.js";
 import sequelize from "../config/db.js";
+import bcrypt from "bcrypt";
+
 const  models= initModels(sequelize);
 const {UsuarioModel} = models;
 

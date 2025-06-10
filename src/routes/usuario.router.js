@@ -1,11 +1,11 @@
 import {Router} from "express";
 const router = Router();
 //importo los controladores
-import {getUsuarios,getUsuarioByMail} from "../controllers/usuario.controller.js";  
+import {crearCuenta, mostrarRegistro} from "../controllers/usuario.controller.js";  
 
-router.get("/",getUsuarios);
+router.get("/registro",mostrarRegistro);
 
-router.post("/",getUsuarioByMail);
+router.post("/registro",crearCuenta);
 
 //EXPORTO las rutas para usar en la app
 export default router;

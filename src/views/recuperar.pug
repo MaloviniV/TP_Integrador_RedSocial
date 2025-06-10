@@ -1,68 +1,49 @@
-doctype html
-html(lang="es")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Recuperar Cuenta | ArteSano
-    link(rel="icon" type="image/png" href="/images/favicon.png")
-    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css")
-    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css")
-    link(rel="stylesheet", href="/stylesheets/style_recuperar.css")
-    script(src="/javascripts/script_recuperar.js" defer)
-  body.d-flex.flex-column.min-vh-100
-    header.bg-dark.text-white.py-3.mb-4
-      .container.text-center
-        h1.logo_ARTE-SANO.mb-0 ARTE-SANO
-    main.flex-grow-1
-      .container
-        .row.justify-content-center
-          .col-md-8.col-lg-5
-            .bg-white.rounded-4.shadow-lg.p-4.mt-4.border.border-1.border-warning
-              h2.text-center.mb-4.text-dark RECUPERA TU CUENTA
+extends layout.pug
 
-              // Mensajes de error
-              if status === 400
-                .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
-                  h4.text-danger.fs-6.mb-1 Ingresa un mail valido.
-              if status === 404
-                .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
-                  h4.text-danger.fs-6.mb-1 No hay resultados para esta búsqueda.
-                  p.lead.fs-6.mb-0.text-danger-emphasis Tu búsqueda no ha devuelto ningún resultado. Vuelve a intentarlo con otra información.
-              if status === 500
-                .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
-                  h4.text-danger.fs-6.mb-1 "Ocurrió un error inesperado. Por favor, intenta nuevamente más tarde."
-              
-              // Formulario de búsqueda
-              if !mostrarOpciones
-                form(action="/recuperar", method="post")
-                  p.lead Introduce tu correo electrónico para buscar tu cuenta.
-                  label.form-label(for="mail") Email:
-                  input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" value=mail)
-                  .d-flex.justify-content-end.gap-2.flex-wrap.overflow-auto
-                    button.btn.btn-outline-dark.flex-shrink-0(id="cancelar" type="button" style="min-width:120px; max-width:180px;") Cancelar
-                    button.btn.btn-warning.flex-shrink-0(type="submit" style="min-width:120px; max-width:180px;") Buscar
+block scripts 
+  script(src="/javascripts/script_recuperar.js" defer)
 
-              // Selección de método de envío
-              if mostrarOpciones 
-                form(action="/recuperar/enviar-codigo", method="post")
-                  input(type="hidden" name="mail" value=mail)
-                  .mb-3
-                    label.form-label.mb-2 ¿Cómo quieres recibir tu código de recuperación?
-                    .form-check
-                      label.form-check-label(for="email") Email: #{emailOculto}
-                      input.form-check-input(type="radio" name="metodo" id="email" value="email" checked)
-                    .form-check
-                      label.form-check-label(for="sms") SMS: #{telefonoOculto}
-                      input.form-check-input(type="radio" name="metodo" id="sms" value="sms")
-                  .d-flex.justify-content-end.gap-2.flex-wrap
-                    button.btn.btn-outline-dark.flex-shrink-0(id="noMail" type="button") ¿No eres tu?
-                    button.btn.btn-warning.flex-shrink-0(type="submit") Enviar código
+block main
+  h2.text-center.mb-4.text-dark RECUPERA TU CUENTA
 
-              // Mensaje de éxito
-              if mensaje
-                .alert.alert-success.mt-3.text-center= mensaje
+  // Ejemplo de mensajes de error
+  if status === 400
+    .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+      h4.text-danger.fs-6.mb-1 Ingresa un mail válido.
+  if status === 404
+    .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+      h4.text-danger.fs-6.mb-1 No hay resultados para esta búsqueda.
+      p.lead.fs-6.mb-0.text-danger-emphasis Tu búsqueda no ha devuelto ningún resultado. Vuelve a intentarlo con otra información.
+  if status === 500
+    .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+      h4.text-danger.fs-6.mb-1 "Ocurrió un error inesperado. Por favor, intenta nuevamente más tarde."
+    
+  // Formulario de búsqueda
+  if !mostrarOpciones
+    form(action="/recuperar", method="post")
+      p.lead Introduce tu correo electrónico para buscar tu cuenta.
+      label.form-label(for="mail") Email:
+      input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" value=mail)
+      .d-flex.justify-content-end.gap-2.flex-wrap.overflow-auto
+        button.btn.btn-outline-dark.flex-shrink-0(id="cancelar" type="button" style="min-width:120px; max-width:180px;") Cancelar
+        button.btn.btn-warning.flex-shrink-0(type="submit" style="min-width:120px; max-width:180px;") Buscar
 
-                
-    footer.bg-dark.text-white.text-center.py-3.mt-5.border-top.border-warning
-      p.mb-0 © 2025 ArteSano - Todos los derechos reservados
-      p.mb-0 Victor Jose David Malovini ULP - WEB2
+  // Selección de método de envío
+  if mostrarOpciones 
+    form(action="/recuperar/enviar-codigo", method="post")
+      input(type="hidden" name="mail" value=mail)
+      .mb-3
+        label.form-label.mb-2 ¿Cómo quieres recibir tu código de recuperación?
+        .form-check
+          label.form-check-label(for="email") Email: #{emailOculto}
+          input.form-check-input(type="radio" name="metodo" id="email" value="email" checked)
+        .form-check
+          label.form-check-label(for="sms") SMS: #{telefonoOculto}
+          input.form-check-input(type="radio" name="metodo" id="sms" value="sms")
+      .d-flex.justify-content-end.gap-2.flex-wrap
+        button.btn.btn-outline-dark.flex-shrink-0(id="noMail" type="button") ¿No eres tú?
+        button.btn.btn-warning.flex-shrink-0(type="submit") Enviar código
+
+  // Mensaje de éxito
+  if mensaje
+    .alert.alert-success.mt-3.text-center= mensaje

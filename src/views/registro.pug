@@ -1,0 +1,48 @@
+extends layout.pug
+
+block scripts 
+  script(src="/javascripts/script_registro.js" defer)
+
+block main
+  h2.text-center.mb-4.text-dark CREAR NUEVA CUENTA
+  if error
+    .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+      h4.text-danger.fs-6.mb-1= status
+      p.lead.fs-6.mb-0.text-danger-emphasis= error
+
+  //formulario
+  form(action="/usuario/registro", method="post")
+    //- .row
+    //-   .col-md-6
+    //-     label.form-label(for="nombre") Nombre: 
+    //-     input.form-control.mb-2(type="text" id="nombre" name="nombre" placeholder="Nombre" required)
+    //-   .col-md-6
+    //-     label.form-label(for="apellido") Apellido:
+    //-     input.form-control.mb-2(type="text" id="apellido" name="apellido" placeholder="Apellido" required)
+    //- label.form-label(for="telefono") Teléfono:
+    //- input.form-control.mb-2(type="tel" id="telefono" name="telefono" placeholder="Celular" required)
+    //- label.form-label(for="mail") Email:
+    //- input.form-control.mb-2(type="email" id="mail" name="mail" placeholder="Email" required)
+    //- label.form-label(for="pw") Contraseña:
+    //- input.form-control.mb-2(type="password" id="pw" name="pw" placeholder="Contraseña" autocomplete="new-password" required)
+    button.btn.btn-warning.w-100.my-3.fs-5(type="submit") Registrarse
+    .text-center
+      a.fs-5(href="/login") ¿Ya tienes una cuenta?
+
+  if exito
+    //éxito
+    .position-fixed.top-0.start-0.w-100.h-100.d-flex.align-items-center.justify-content-center.bg-dark.bg-opacity-75(style="z-index:1050;")
+      .bg-white.rounded-4.shadow-lg.p-5.text-center
+        h4.text-success.mb-3 ¡Tu cuenta fue creada exitosamente!
+        p Serás redirigido al login...
+        button.btn.btn-success.mt-3(type="button" id="btnIrLogin") Ir al login
+    script.
+      setTimeout(function() {
+        location.href = "/login";
+      }, 5000);
+      var btn = document.getElementById("btnIrLogin");
+      if (btn) {
+        btn.addEventListener("click", function() {
+          location.href = "/login";
+        });
+      }

@@ -10,4 +10,4 @@ if (btnNoMail) {
   btnNoMail.addEventListener('click', () => {
     window.location.href = '/recuperar';
   });
-}
+};
