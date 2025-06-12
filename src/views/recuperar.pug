@@ -22,8 +22,8 @@ block main
   if !mostrarOpciones
     form(action="/recuperar", method="post")
       p.lead Introduce tu correo electrónico para buscar tu cuenta.
-      label.form-label(for="mail") Email:
-      input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" value=mail)
+      label.form-label(for="email") Email:
+      input.form-control.mb-3(type="email" id="email" name="email" placeholder="Email" value=email)
       .d-flex.justify-content-end.gap-2.flex-wrap.overflow-auto
         button.btn.btn-outline-dark.flex-shrink-0(id="cancelar" type="button" style="min-width:120px; max-width:180px;") Cancelar
         button.btn.btn-warning.flex-shrink-0(type="submit" style="min-width:120px; max-width:180px;") Buscar
@@ -31,7 +31,7 @@ block main
   // Selección de método de envío
   if mostrarOpciones 
     form(action="/recuperar/enviar-codigo", method="post")
-      input(type="hidden" name="mail" value=mail)
+      input(type="hidden" name="email" value=email)
       .mb-3
         label.form-label.mb-2 ¿Cómo quieres recibir tu código de recuperación?
         .form-check

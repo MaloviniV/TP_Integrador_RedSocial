@@ -1,0 +1,12 @@
+extends layout.pug 
+
+block scripts 
+  script(src="/javascripts/script_recuperar.js" defer)
+
+block main
+  h2.text-center.mb-4.text-dark INGRESA TU NUEVA CLAVE
+  form(action="/recuperar/nuevaClave", method="post" autocomplete="off")
+    input(type="hidden" name="token" value=token)
+    label.form-label(for="pw") Nueva Contraseña:
+    input.form-control.mb-2(type="password" id="pw" name="pw" placeholder="Contraseña" autocomplete="new-password" required)
+    button.btn.btn-warning.w-100.mb-2.fs-5(id="btnEnviar" type="submit") Enviar

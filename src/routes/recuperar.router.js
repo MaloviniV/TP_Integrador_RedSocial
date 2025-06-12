@@ -1,14 +1,14 @@
 import {Router} from "express";
 const router = Router();
 //importo los controladores
-import {mostrarRecuperar, getUsuarioByMail, mostrarMetodoEnvio, enviarCodigoRecuperacion} from "../controllers/recuperar.controller.js";
+import {mostrarRecuperar, solicitarRecuperacion, actualizarClave, mostrarFormularioNuevaClave} from "../controllers/recuperar.controller.js";
 
 router.get("/", mostrarRecuperar)
 
-router.post("/", getUsuarioByMail);
+router.post("/", solicitarRecuperacion);
 
-router.get("/metodo-envio", mostrarMetodoEnvio);
+router.get("/:token", mostrarFormularioNuevaClave);
 
-router.post("/enviar-codigo", enviarCodigoRecuperacion);
+router.post("/nuevaClave", actualizarClave);
 
 export default router;

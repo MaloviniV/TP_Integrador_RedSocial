@@ -2,7 +2,6 @@ import initModels from "../models/init-models.js";
 import sequelize from "../config/db.js";
 import bcrypt from "bcrypt";
 
-import { ocultarEmail, ocultarTelefono } from '../utils/ocultarDatos.js';
 const  models= initModels(sequelize);
 const {UsuarioModel} = models;
 
@@ -22,9 +21,8 @@ export const mostrarRegistro = async (req,res)=>{
 export const crearCuenta = async (req,res)=>{
   try {
     console.log(req.body);
-    //const {nombre,apellido, telefono, mail, pw} = req.body;
-    const mail="dsfs@sdvds.com";
-    const pw = "1234";
+    const {nombre,apellido, telefono, mail, pw} = req.body;
+
     const existe = await UsuarioModel.findOne({where: {email: mail}});
 
     if(existe){
@@ -36,13 +34,13 @@ export const crearCuenta = async (req,res)=>{
     const saltRounds = parseInt(process.env.SALT_ROUND) || 10;
     const hash = await bcrypt.hash(pw, saltRounds);
 
-    // await UsuarioModel.create({
-    //   nombre,
-    //   apellido,
-    //   telefono,
-    //   email: mail,
-    //   contraseña: hash
-    // });
+    await UsuarioModel.create({
+      nombre,
+      apellido,
+      telefono,
+      email: mail,
+      contraseña: hash
+    });
     console.log("USUARIO CREADO CON EXITO");
     
     res.render("registro", {

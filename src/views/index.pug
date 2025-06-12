@@ -12,17 +12,22 @@ html(lang="es")
   body 
     header.bg-dark.text-white.py-3.mb-4.sticky-top
       .container.d-flex.justify-content-between.align-items-center
-        h1.mb-0.logo_ARTE-SANO ARTE-SANO
-        nav
-          button.btn.btn-outline-light.rounded-pill.px-4.py-0.fs-5.d-flex.align-items-center(type="button" id="btn-login")
+        a(href="/" style="text-decoration:none; color:inherit;")
+          h1.mb-0.logo_ARTE-SANO ARTE-SANO
+        nav.d-flex.align-items-center.ms-auto
+          button.btn.btn-outline-light.btn-sm.rounded-pill.px-3.py-1.fs-6.d-flex.align-items-center(type="button" id="btnLogin")
             i.bi.bi-person-circle.icono
-            span.d-none.d-sm-inline.ms-3 INICIAR SESIÓN
+            span.d-none.d-sm-inline.ms-2 INICIAR SESIÓN
+          button.btn.btn-outline-light.btn-sm.rounded-pill.px-3.py-1.fs-6.d-flex.align-items-center.ms-3(type="button" id="btnCrearCuenta")
+            i.bi.bi-person-plus.icono
+            span.d-none.d-sm-inline.ms-2 CREAR CUENTA
+
     main
       .container-fluid.p-0
         .row.justify-content-center.align-items-center.m-0
           .col-md-8.text-center.full-vh-row
             h1.display-4.mb-3 ARTE-SANO
-            p.lead ARTE.SANO 
+            p.lead ARTE-SANO 
               br
               | ¡Bienvenido a nuestra comunidad de artesanos! Un espacio creado para conectar, compartir y inspirarse junto a personas que comparten tu pasión.
               br

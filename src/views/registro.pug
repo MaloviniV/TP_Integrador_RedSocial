@@ -12,19 +12,19 @@ block main
 
   //formulario
   form(action="/usuario/registro", method="post")
-    //- .row
-    //-   .col-md-6
-    //-     label.form-label(for="nombre") Nombre: 
-    //-     input.form-control.mb-2(type="text" id="nombre" name="nombre" placeholder="Nombre" required)
-    //-   .col-md-6
-    //-     label.form-label(for="apellido") Apellido:
-    //-     input.form-control.mb-2(type="text" id="apellido" name="apellido" placeholder="Apellido" required)
-    //- label.form-label(for="telefono") Teléfono:
-    //- input.form-control.mb-2(type="tel" id="telefono" name="telefono" placeholder="Celular" required)
-    //- label.form-label(for="mail") Email:
-    //- input.form-control.mb-2(type="email" id="mail" name="mail" placeholder="Email" required)
-    //- label.form-label(for="pw") Contraseña:
-    //- input.form-control.mb-2(type="password" id="pw" name="pw" placeholder="Contraseña" autocomplete="new-password" required)
+    .row
+      .col-md-6
+        label.form-label(for="nombre") Nombre: 
+        input.form-control.mb-2(type="text" id="nombre" name="nombre" placeholder="Nombre" required)
+      .col-md-6
+        label.form-label(for="apellido") Apellido:
+        input.form-control.mb-2(type="text" id="apellido" name="apellido" placeholder="Apellido" required)
+    label.form-label(for="telefono") Teléfono:
+    input.form-control.mb-2(type="tel" id="telefono" name="telefono" placeholder="Celular" required)
+    label.form-label(for="mail") Email:
+    input.form-control.mb-2(type="email" id="mail" name="mail" placeholder="Email" required)
+    label.form-label(for="pw") Contraseña:
+    input.form-control.mb-2(type="password" id="pw" name="pw" placeholder="Contraseña" autocomplete="new-password" required)
     button.btn.btn-warning.w-100.my-3.fs-5(type="submit") Registrarse
     .text-center
       a.fs-5(href="/login") ¿Ya tienes una cuenta?

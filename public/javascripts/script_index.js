@@ -1,6 +1,13 @@
-const btnLogin = document.getElementById("btn-login");
+const btnLogin = document.getElementById("btnLogin");
 if(btnLogin){
   btnLogin.addEventListener("click",()=>{
-    window.location.href = "/login"
+    location.href = "/login"
+  });
+};
+
+const btnCrearCuenta = document.getElementById("btnCrearCuenta");
+if(btnCrearCuenta){
+  btnCrearCuenta.addEventListener("click",()=>{
+    location.href = "/usuario/registro"
   });
 };
