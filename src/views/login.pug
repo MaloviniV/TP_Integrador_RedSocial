@@ -2,6 +2,11 @@ extends layout.pug
 
 block main
   h2.text-center.mb-4.text-dark INICIAR SESIÓN
+
+  if status
+    .border.border-danger.rounded-3.bg-danger.bg-opacity-10.p-3.mb-4.text-center
+      h4.text-danger.fs-6.mb-1= mensaje
+
   form(action="/login", method="post" autocomplete="off")
     label.form-label(for="mail") Email:
     input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" required)

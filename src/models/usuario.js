@@ -20,7 +20,7 @@ export default class Usuario extends Model {
       email: {
         type: DataTypes.STRING(50),
         allowNull: false,
-        unique: "email"
+        unique: true
       },
       telefono: {
         type: DataTypes.STRING(20),
@@ -29,6 +29,14 @@ export default class Usuario extends Model {
       contraseña: {
         type: DataTypes.STRING(255),
         allowNull: false
+      },
+      token: {
+        type: DataTypes.STRING(255),
+        allowNull: true
+      },
+      fecha_exp_token: {
+        type: DataTypes.DATE,
+        allowNull: true
       },
       estado_cuenta: {
         type: DataTypes.ENUM('ACTIVA','DESACTIVADA','SUSPENDIDA'),
