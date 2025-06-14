@@ -1,9 +1,9 @@
 export function verAutorizacion(req, res, next) {
   console.log("usuario con permiso: "+JSON.stringify(req.session));
-  if (req.session && req.session.usuarioId) {
+  if (req.session && req.session.usuario) {
     
-    next(); // Usuario autenticado, sigue
+    next();
   } else {
-    res.redirect("/login"); // No autenticado, redirige
+    res.redirect("/login");
   }
 }

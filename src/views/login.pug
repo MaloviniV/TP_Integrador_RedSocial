@@ -9,9 +9,9 @@ block main
 
   form(action="/login", method="post" autocomplete="off")
     label.form-label(for="mail") Email:
-    input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" required)
+    input.form-control.mb-3(type="email" id="mail" name="mail" placeholder="Email" value="ana1@correo.com" required)
     label.form-label(for="pw") Contraseña:
-    input.form-control.mb-2(type="password" id="pw" name="pw" placeholder="Contraseña" autocomplete="new-password" required)
+    input.form-control.mb-2(type="password" id="pw" name="pw" placeholder="Contraseña" autocomplete="new-password" value="pass1" required)
     .text-end.my-3
       a(href="/recuperar") ¿Olvidaste la contraseña?
     button.btn.btn-warning.w-100.mb-2.fs-5(type="submit") Ingresar

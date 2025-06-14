@@ -17,9 +17,9 @@ export const verificarLogin = async (req, res) => {
     console.log("hola3");
 
     if (usuario) {
-      //req.session.usuario = usuario;
-      console.log("aca estoy"+usuario);
+      console.log("aca estoy"+JSON.stringify(usuario));
       
+      req.session.usuario = usuario;
       res.redirect("/home");
     } else {
       res.status(401).render("login", { mensaje: "Credenciales incorrectas", status: 401 });
@@ -30,7 +30,13 @@ export const verificarLogin = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  req.session?.destroy(() => {
+  req.session?.destroy((err) => {
+    // Fuerza un error para pruebas
+    //err = err || new Error("Error simulado al destruir la sesión"); Fuerza un error de servidor
+    if (err) {
+      console.error("Error al destruir la sesión:", err);
+      return res.status(500).render("login", { mensaje: "Error interno del servidor al cerrar sesión", status: 500 });
+    }
     res.clearCookie('connect.sid'); // si usas cookies de sesión
     res.redirect('/');
   });
