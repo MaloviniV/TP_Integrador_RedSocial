@@ -1,12 +1,15 @@
 if publicaciones
-  .vitrina
+  .row.g-4
     each publi in publicaciones 
-      .publicacion
-        h1.user #{publi.usuario}
-        h3.resenia  #{publi.resenia}
-        img.image(src=publi.imagen alt="img_compartida" onerror="this.onerror=null;this.src='/images/sinImagen.png';" )
-        .acciones 
-          button Comentar
-          button Denunciar
+      .col-md-6.col-lg-4
+        .card.shadow-sm.h-100
+          if publi.imagen
+            img.card-img-top(src=publi.imagen alt="img_compartida" style="object-fit:cover;max-height:200px;" onerror="this.onerror=null;this.src='/images/sinImagen.png';")
+          .card-body
+            h5.card-title.mb-1 #{publi.usuario}
+            p.card-text.mb-2 #{publi.resenia}
+            .d-flex.justify-content-between
+              button.btn.btn-outline-secondary.btn-sm Comentar
+              button.btn.btn-outline-danger.btn-sm Denunciar
 else 
-  p No hay publicaciones
+  .alert.alert-info.text-center.mt-4 No hay publicaciones.

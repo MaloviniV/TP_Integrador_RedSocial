@@ -8,6 +8,7 @@ import recuperarRoutes from "./routes/recuperar.router.js";
 import loginRoutes from "./routes/login.router.js";
 import usuarioRoutes from "./routes/usuario.router.js";
 import homeRoutes from "./routes/home.router.js"
+import amistadesRoutes from "./routes/amistades.router.js"
 import { verAutorizacion } from "./middleware/autorizacion.js";
 
 import morgan from "morgan";
@@ -44,7 +45,9 @@ app.use("/login",loginRoutes);
 
 app.use("/usuario", usuarioRoutes);
 
-app.use("/home", verAutorizacion, homeRoutes);
+app.use("/home", homeRoutes);
+
+app.use("/amistades", amistadesRoutes);
 
 //Middleware para error 404
 app.use((req, res, next) => {

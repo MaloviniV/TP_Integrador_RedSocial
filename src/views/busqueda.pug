@@ -1,0 +1,25 @@
+if error 
+  .alert.alert-danger.text-center.mt-4= error
+else if busqueda.usuarios && busqueda.usuarios.length > 0
+  .d-flex.flex-column.align-items-center
+    each resultado in busqueda.usuarios
+      .card.shadow-sm.mb-4(style="width:75%")
+        .card-body
+          .d-flex.align-items-center.justify-content-between.usuarios
+            // Imagen a la izquierda
+            if resultado.imagen
+              img.rounded-circle.me-4(src=resultado.imagen alt="img_user" width="96" height="96" style="object-fit:cover;" onerror="this.onerror=null;this.src='/images/sinImagen.png';")
+            else
+              i.bi.bi-person-circle.fs-0.text-secondary.me-4(style="font-size: 6rem; width:96px; height:96px; display:flex; align-items:center; justify-content:center;")
+            // Info en el centro
+            .flex-grow-1
+              h5.mb-1 #{resultado.nombre} #{resultado.apellido}
+              if resultado.Perfil && resultado.Perfil.nacionalidad
+                p.text-muted.mb-0 Nacionalidad: #{resultado.Perfil.nacionalidad}
+              else
+                p.text-muted.mb-0 Nacionalidad no disponible
+            // Botón a la derecha
+            .ms-4
+              button.btn.btn-outline-primary(type="button" data-id-usuario=resultado.id_usuario) Añadir amigo
+else 
+  .alert.alert-warning.text-center.mt-4 No hay resultados para la búsqueda.
